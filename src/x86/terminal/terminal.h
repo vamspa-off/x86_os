@@ -16,7 +16,7 @@ void executor(char* full_command);
 void terminal(char keyPressed);
 void prepare_terminal();
 
-void help(CommandArguments* args);
+void info(CommandArguments* args);
 void clear();
 void setcolor(CommandArguments* args);
 void count(CommandArguments* args);
