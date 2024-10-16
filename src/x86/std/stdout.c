@@ -189,7 +189,7 @@ void fill_screen() {
     char *video = (char *)0xB8000; // Modify this according to your video memory address
 
     // Fill the screen with blank spaces
-    for (int i = 0; i < (25 * 80 * 2); i += 2) {
+    for (int i = 0; i < (24 * 80 * 2); i += 2) {
         //video[i] = 0; // Write a space character
         video[i + 1] = background_color; // Set the attribute byte to 0 (assuming default color)
     }

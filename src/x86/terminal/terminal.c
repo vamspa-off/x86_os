@@ -10,8 +10,8 @@
 int cmd_buf_size = 0;
 int max_size = 100; // Adjust the maximum buffer size as needed
 char *buf[1];
-char *linefeed = ">>> ";
-//char *welcome_msg = "C-based OS\0";
+char *linefeed = "type> ";
+//char *welcome_msg = "welcome to my 32 bit operating system :) \0";
 int current_time = 10000;
 
 CommandMapping commands[] = {
@@ -40,7 +40,7 @@ void executor(char* full_command) {
 void prepare_terminal(){
     row = 0;
     col = 0;
-    //char *banner = fill_string(' ',80);
+    char *banner = fill_string(' ',80);
 
     printf("\n %c",linefeed);
     //puts(0,0, welcome_msg ,5);
@@ -102,23 +102,21 @@ void terminal(char keyPressed){
         }
         setCursorPosition(row,col);
     }
-    //puts(24,0,welcome_msg,75);
+/*
+    unsigned char time_bfr[20];
 
+    get_time(time_bfr);
+    puts(24, 62, time_bfr,75);*/
 
-	// GET LOCAL TIME
-    //unsigned char time_bfr[20];
-
-    //get_time(time_bfr);
-    //puts(24, 62, time_bfr,75);
-
-	// END GET
-
-    //char unix_t[40];
-    //intToString(get_timestamp(),unix_t);
-    //puts(1,60,"time ",75);
-    //puts(1,65,unix_t,75);
+/*
+    char unix_t[40];
+    intToString(get_timestamp(),unix_t);
+    puts(1,60,"time ",75);
+    puts(1,65,unix_t,75);*/
 
     if (get_timestamp() - current_time > 3 * pow(10,8)){
+        //puts(24,0,welcome_msg,75);
+        //shift_string_right(welcome_msg,strlen(welcome_msg));
         current_time = get_timestamp();
     }
 };
