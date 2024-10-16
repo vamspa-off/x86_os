@@ -40,7 +40,7 @@ void executor(char* full_command) {
 void prepare_terminal(){
     row = 0;
     col = 0;
-    char *banner = fill_string(' ',80);
+    //char *banner = fill_string(' ',80);
 
     printf("\n %c",linefeed);
     //puts(0,0, welcome_msg ,5);
