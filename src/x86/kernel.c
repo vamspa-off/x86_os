@@ -20,7 +20,7 @@ void kernel_start() {
     char keyPressed;
 
     MemoryMapEntry* a = malloc(VID_SIZE);
-    //printf("\n first mem loc: %x",a->base_adr);
+    printf("\n first mem loc: %x",a->base_adr);
 
     copy_memory(VID_MEM,VID_MEM+VID_SIZE,a->base_adr);
 

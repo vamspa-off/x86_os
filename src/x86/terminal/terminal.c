@@ -16,7 +16,7 @@ int current_time = 10000;
 
 CommandMapping commands[] = {
     {"clear", clear},
-    {"help", help},
+    {"info", info},
     {"setcolor", setcolor},
     {"count", count},
 };
@@ -40,7 +40,7 @@ void executor(char* full_command) {
 void prepare_terminal(){
     row = 0;
     col = 0;
-    char *banner = fill_string(' ',80);
+    //char *banner = fill_string(' ',80);
 
     printf("\n %c",linefeed);
     //puts(0,0, welcome_msg ,5);
@@ -102,6 +102,7 @@ void terminal(char keyPressed){
         }
         setCursorPosition(row,col);
     }
+<<<<<<< HEAD
 /*
     unsigned char time_bfr[20];
 
@@ -113,6 +114,18 @@ void terminal(char keyPressed){
     intToString(get_timestamp(),unix_t);
     puts(1,60,"time ",75);
     puts(1,65,unix_t,75);*/
+=======
+
+    unsigned char time_bfr[20];
+
+    //get_time(time_bfr);
+    //puts(24, 62, time_bfr,75);
+
+    //char unix_t[40];
+    //intToString(get_timestamp(),unix_t);
+    //puts(1,60,"time ",75);
+    //puts(1,65,unix_t,75);
+>>>>>>> main
 
     if (get_timestamp() - current_time > 3 * pow(10,8)){
         //puts(24,0,welcome_msg,75);

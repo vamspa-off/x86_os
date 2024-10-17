@@ -3,7 +3,7 @@
 #include "utils/string.h"
 #include "utils/controller.h"
 
-void help(CommandArguments* args){
+void info(CommandArguments* args){
     printf("here are all the commands:");
     printf("\n setcolor {color_int} - sets the terminal color");
     printf("\n clear - clears the screen");
