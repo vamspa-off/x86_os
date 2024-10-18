@@ -5,7 +5,10 @@
 
 void info(CommandArguments* args){
     printf("here are all the commands:");
+    printf("\n help - how this menu");
+    printf("\n count {number} - counts from 0 to number");
     printf("\n setcolor {color_int} - sets the terminal color");
+    printf("\n shutdown - shutdown pc");
     printf("\n clear - clears the screen");
 }
 
@@ -21,7 +24,7 @@ void setcolor(CommandArguments* args){
     // puts(20,40,split_command[1],6);
     if (strlen(args->argument) == 2){
         background_color = color;
-        printf("ok setting color \n\0");
+        printf("\n ok setting color");
         fill_screen();
 
     }else{
@@ -38,3 +41,5 @@ void count( CommandArguments* args){
         printf("%d\n\0",i);
     }
 }
+
+

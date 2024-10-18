@@ -36,7 +36,6 @@ void bcd_to_string(unsigned char reg,unsigned char* high,unsigned char* low){
     intToString((unsigned int)bcd & 0x0F, low);
 }
 
-// TODO: add iran time support
 void get_time(unsigned char* buffer){
     int buf_size = 0;
 
@@ -47,8 +46,6 @@ void get_time(unsigned char* buffer){
     bcd_to_string(0x04,hour_high,hour_low);
     bcd_to_string(0x02,min_high,min_low);
     bcd_to_string(0x00,second_high,second_low);
-
-    add_to_string("UTC TIME ",buffer,&buf_size);
 
     add_to_string(hour_high,buffer,&buf_size);
     add_to_string(hour_low,buffer,&buf_size);

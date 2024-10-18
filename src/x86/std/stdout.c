@@ -6,7 +6,7 @@
 volatile char *video = (volatile char*)0xB8000;
 int row = 0;
 int col = 0;
-int background_color = 113;
+int background_color = 7;
 
 
 void setCursorPosition(int row, int col) {
@@ -75,7 +75,7 @@ void printf ( char *string ,...)
         }
     }
 
-    if(row + 1 > 21){
+    if(row + 1 > 24){
         shiftScreenUp(2);
         row -= 2;
     }
@@ -189,7 +189,7 @@ void fill_screen() {
     char *video = (char *)0xB8000; // Modify this according to your video memory address
 
     // Fill the screen with blank spaces
-    for (int i = 0; i < (24 * 80 * 2); i += 2) {
+    for (int i = 0; i < (25 * 80 * 2); i += 2) {
         //video[i] = 0; // Write a space character
         video[i + 1] = background_color; // Set the attribute byte to 0 (assuming default color)
     }
@@ -202,12 +202,12 @@ void shiftScreenUp(int times) {
 
     for (int time = 1; time <= times; time++)
     {
-        for (int i = 0; i < (24 * 80 * 2) - (80 * 2); ++i) {
+        for (int i = 0; i < (25 * 80 * 2) - (80 * 2); ++i) {
             video[i] = video[i + 160]; // Shifts the content up by one row (80 columns * 2 bytes per character)
         }
 
         // Clear the last row to prevent remnants
-        for (int i = (24 * 80 * 2) - (80 * 2); i < (24 * 80 * 2); i+=2) {
+        for (int i = (25 * 80 * 2) - (80 * 2); i < (25 * 80 * 2); i+=2) {
             video[i] = 0; // Clearing the last row
         }
     }

@@ -20,6 +20,7 @@ void info(CommandArguments* args);
 void clear();
 void setcolor(CommandArguments* args);
 void count(CommandArguments* args);
+void power_off();
 
 extern char *linefeed;
 extern int current_time;

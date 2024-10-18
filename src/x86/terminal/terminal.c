@@ -19,6 +19,7 @@ CommandMapping commands[] = {
     {"info", info},
     {"setcolor", setcolor},
     {"count", count},
+    {"shutdown", power_off},
 };
 
 void executor(char* full_command) {
@@ -34,7 +35,7 @@ void executor(char* full_command) {
             return;
         }
     }
-    printf("command not found: %c",full_command);
+    printf("\n command not found: %c",full_command);
 }
 
 void prepare_terminal(){
@@ -71,7 +72,7 @@ void terminal(char keyPressed){
             cmd_buffer[cmd_buf_size-1] = '\0';
             cmd_buffer[cmd_buf_size] = '\0';
 
-            printf("\n\0");
+            //printf("\n\0");
             if (strlen(cmd_buffer) > 0){
                 executor(cmd_buffer);
             }
@@ -81,12 +82,12 @@ void terminal(char keyPressed){
 
             printf("\n %c",linefeed);
 
-            if (row > 21){
+            /*if (row > 24){
                 shiftScreenUp(row - prev_row);
-                row = 20;
+                row = 24;
                 col = 6;
                 printf(linefeed);
-            }
+            }*/
         }
         // linefeed protector and delete handler
         else if(keyPressed == '\b' && col > 6){
@@ -102,19 +103,6 @@ void terminal(char keyPressed){
         }
         setCursorPosition(row,col);
     }
-<<<<<<< HEAD
-/*
-    unsigned char time_bfr[20];
-
-    get_time(time_bfr);
-    puts(24, 62, time_bfr,75);*/
-
-/*
-    char unix_t[40];
-    intToString(get_timestamp(),unix_t);
-    puts(1,60,"time ",75);
-    puts(1,65,unix_t,75);*/
-=======
 
     unsigned char time_bfr[20];
 
@@ -125,7 +113,6 @@ void terminal(char keyPressed){
     //intToString(get_timestamp(),unix_t);
     //puts(1,60,"time ",75);
     //puts(1,65,unix_t,75);
->>>>>>> main
 
     if (get_timestamp() - current_time > 3 * pow(10,8)){
         //puts(24,0,welcome_msg,75);
