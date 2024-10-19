@@ -5,5 +5,7 @@ void get_time(unsigned char* buffer);
 int get_unix_time();
 int delay_passed(int* current);
 int get_timestamp();
+int time();
+void sleep(unsigned int time_to_sleep);
 
 #endif

@@ -8,7 +8,6 @@ void info(CommandArguments* args){
     printf("\n help - how this menu");
     printf("\n count {number} - counts from 0 to number");
     printf("\n setcolor {color_int} - sets the terminal color");
-    printf("\n shutdown - shutdown pc");
     printf("\n clear - clears the screen");
 }
 
@@ -41,5 +40,3 @@ void count( CommandArguments* args){
         printf("%d\n\0",i);
     }
 }
-
-

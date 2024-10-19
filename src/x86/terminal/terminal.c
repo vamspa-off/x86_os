@@ -19,7 +19,6 @@ CommandMapping commands[] = {
     {"info", info},
     {"setcolor", setcolor},
     {"count", count},
-    {"shutdown", power_off},
 };
 
 void executor(char* full_command) {

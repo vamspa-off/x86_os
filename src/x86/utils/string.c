@@ -1,4 +1,5 @@
 #include "../std/stdout.h"
+#include <stddef.h>
 #include "time.h"
 #include "math.h"
 #include "string.h"
@@ -237,5 +238,28 @@ int stringToInt(const char* str) {
 }
 
 int exists(char** string_list){
-    
+
+}
+
+int memcmp(void *dest, void *src, size_t n)
+{
+    char *csrc = (char *)src;
+    char *cdest = (char *)dest;
+    for (int i=0; i<n; i++){ cdest[i] = csrc[i]; }
+    if (dest > src){ return 1; } else if (dest < src){ return -1; } else { return 0; }
+}
+
+int strcmp(char* x, char* y)
+{
+    int flag = 0;
+
+    while (*x != '\0' || *y != '\0') {
+        if (*x == *y){ x++; y++; }
+        else if ((*x == '\0' && *y != '\0') || (*x != '\0' && *y == '\0') || *x != *y){
+            flag = 1;
+            return 1;
+        }
+    }
+
+    if (flag == 0){ return 1; }
 }

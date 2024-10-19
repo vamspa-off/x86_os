@@ -1,6 +1,8 @@
 #ifndef STRING_H
 #define STRING_H
 
+#include <stddef.h>
+
 typedef struct
 {
    char** list;
@@ -21,5 +23,7 @@ void split_string(char* string,int* str_len,const char splitter,STRLIST* out);
 void shift_string_right(char* string,int size);
 void shift_string_left(char* string, int size);
 int stringToInt(const char* str);
+int memcmp(void *dest, void *src, size_t n);
+int strcmp(char* x, char* y);
 
 #endif

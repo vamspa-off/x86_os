@@ -1,5 +1,6 @@
 #include "string.h"
 #include "controller.h"
+#include "string.h"
 
 // Function to read from RTC
 unsigned char rtc_read(unsigned char reg) {
@@ -49,11 +50,9 @@ void get_time(unsigned char* buffer){
 
     add_to_string(hour_high,buffer,&buf_size);
     add_to_string(hour_low,buffer,&buf_size);
-    add_to_string(":",buffer,&buf_size);
 
     add_to_string(min_high,buffer,&buf_size);
     add_to_string(min_low,buffer,&buf_size);
-    add_to_string(":",buffer,&buf_size);
 
     add_to_string(second_high,buffer,&buf_size);
     add_to_string(second_low,buffer,&buf_size);
@@ -70,4 +69,27 @@ int delay_passed(int* current){
     // true if 2 seconds has passed since the current time pointer
     if (get_unix_time() - *current < 2)return 0;
     return 1;
+}
+
+int time(){
+    char hour_high[3],hour_low[3];
+    unsigned char min_high[3],min_low[3];
+    unsigned char second_high[3],second_low[3];
+
+    bcd_to_string(0x04,hour_high,hour_low);
+    bcd_to_string(0x02,min_high,min_low);
+    bcd_to_string(0x00,second_high,second_low);
+
+    int hour_hi = stringToInt(hour_high) * 10;
+    int hours = stringToInt(hour_low) + hour_hi;
+    int min_hi = stringToInt(min_high) * 10;
+    int min = stringToInt(min_low) + min_hi;
+    int sec_hi = stringToInt(second_high) * 10;
+    int sec = stringToInt(second_low) + sec_hi;
+    return hours * 3600 + min * 60 + sec;
+}
+
+void sleep(unsigned int time_to_sleep){
+    unsigned int rT = time() + time_to_sleep;
+    while(time() < rT);
 }
